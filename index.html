@@ -1,949 +1,110 @@
-
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <title>Lista de Presentes</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <style>
-        body { font-family: sans-serif; padding: 2rem; background: #f7f7f7; }
-        .item { background: white; border-radius: 10px; padding: 1rem; margin: 1rem 0; box-shadow: 0 2px 5px rgba(0,0,0,0.1); display: flex; gap: 1rem; }
-        .item img { max-width: 150px; border-radius: 10px; }
-        .info { flex: 1; }
-        .title { font-size: 1.2rem; font-weight: bold; }
-        .desc { white-space: pre-wrap; margin: 0.5rem 0; }
-        .link { margin-top: 0.5rem; }
-        .link a { color: #0077cc; text-decoration: none; }
-        .link a:hover { text-decoration: underline; }
-        .hidden { opacity: 0.3; pointer-events: none; }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Lista de Presentes - Tiago & Priscila</title>
+  <style>
+    body { font-family: Arial, sans-serif; background: #fdfdfd; margin: 0; padding: 20px; }
+    h1 { text-align: center; color: #333; }
+    .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; padding: 20px 0; }
+    .card { background: white; border-radius: 10px; box-shadow: 0 0 10px #ccc; padding: 15px; display: flex; flex-direction: column; justify-content: space-between; }
+    .card img { max-width: 100%; height: auto; border-radius: 10px; }
+    .card h2 { font-size: 1.2em; margin: 10px 0 5px; color: #444; }
+    .card p { font-size: 0.95em; color: #666; }
+    .card .price { font-weight: bold; color: #1e88e5; margin-top: 8px; }
+    .card button { margin-top: auto; padding: 10px; background: #1e88e5; color: white; border: none; border-radius: 6px; cursor: pointer; }
+    .card button:hover { background: #1565c0; }
+    #formulario { display: none; margin-top: 20px; padding: 20px; border: 2px solid #1e88e5; border-radius: 8px; }
+    #formulario h3 { margin-top: 0; }
+    label { display: block; margin: 8px 0 4px; }
+    input[type="text"], input[type="email"] { width: 100%; padding: 8px; border-radius: 4px; border: 1px solid #ccc; }
+    #formulario button { margin-top: 10px; }
+  </style>
 </head>
 <body>
-    <h1>🎁 Lista de Presentes - Tiago & Priscila</h1>
-    <p>Escolha um item e preencha seu nome e e-mail. Ao confirmar, o item será marcado como escolhido.</p>
-
-    
-    <div class="item ">
-        <img src="https://i.imgur.com/Le4RJSG.png" alt="Imagem do presente">
-        <div class="info">
-            <div class="title">Jogo de pratos 24 peças</div>
-            <div class="desc">Jogo de pratos 24 peças
-
-💵Valor estimado: R$ 300,00 
-📲PIX: priiislopes@gmail.com
-🔗Link: https://is.gd/Yt9B0H
-</div>
-            <div class="link"><a href="https://is.gd/Yt9B0H" target="_blank">🔗 Ver produto</a></div>
-        </div>
-    </div>
-    
-    <div class="item ">
-        <img src="https://i.imgur.com/xKoYhBz.png" alt="Imagem do presente">
-        <div class="info">
-            <div class="title">Jogo de talher inox 36 peças</div>
-            <div class="desc">Jogo de talher inox 36 peças
-
-💵Valor estimado: R$ 130,00
-📲PIX: priiislopes@gmail.com
-🔗Link: https://is.gd/h7I8dD
-</div>
-            <div class="link"><a href="https://is.gd/h7I8dD" target="_blank">🔗 Ver produto</a></div>
-        </div>
-    </div>
-    
-    <div class="item ">
-        <img src="https://i.imgur.com/I8kOsoh.png" alt="Imagem do presente">
-        <div class="info">
-            <div class="title">Jogo 6 Xícaras médias</div>
-            <div class="desc">Jogo 6 Xícaras médias
-
-💵Valor estimado: R$  60,00
-📲PIX: priiislopes@gmail.com
-🔗Link: https://is.gd/aXD0ef
-</div>
-            <div class="link"><a href="https://is.gd/aXD0ef" target="_blank">🔗 Ver produto</a></div>
-        </div>
-    </div>
-    
-    <div class="item ">
-        <img src="https://i.imgur.com/BKHkv0N.png" alt="Imagem do presente">
-        <div class="info">
-            <div class="title">Jogo 6 Xícara pequenas</div>
-            <div class="desc">Jogo 6 Xícara pequenas
-
-💵Valor estimado: R$ 30,00
-📲PIX: priiislopes@gmail.com
-🔗Link: https://is.gd/5cPC2Q
-</div>
-            <div class="link"><a href="https://is.gd/5cPC2Q" target="_blank">🔗 Ver produto</a></div>
-        </div>
-    </div>
-    
-    <div class="item ">
-        <img src="https://i.imgur.com/0aupBI6.png" alt="Imagem do presente">
-        <div class="info">
-            <div class="title">Jogo 8 Copos</div>
-            <div class="desc">Jogo 8 Copos
-
-💵Valor estimado: R$ 60,00
-📲PIX: priiislopes@gmail.com
-🔗Link: https://is.gd/ALzkWw
-</div>
-            <div class="link"><a href="https://is.gd/ALzkWw" target="_blank">🔗 Ver produto</a></div>
-        </div>
-    </div>
-    
-    <div class="item ">
-        <img src="https://i.imgur.com/GOZf08b.png" alt="Imagem do presente">
-        <div class="info">
-            <div class="title">Jogo 6 taças e jarra em vidro</div>
-            <div class="desc">Jogo 6 taças e jarra em vidro
-
-💵Valor estimado: R$ 110,00
-📲PIX: priiislopes@gmail.com
-🔗Link: https://is.gd/rXBNmm
-</div>
-            <div class="link"><a href="https://is.gd/rXBNmm" target="_blank">🔗 Ver produto</a></div>
-        </div>
-    </div>
-    
-    <div class="item ">
-        <img src="https://i.imgur.com/pAb0IMD.png" alt="Imagem do presente">
-        <div class="info">
-            <div class="title">Jogo 4 canecas de chopp de vidro 300ml</div>
-            <div class="desc">Jogo 4 canecas de chopp de vidro 300ml
-
-💵Valor estimado: R$ 70,00
-📲PIX: priiislopes@gmail.com
-🔗Link: https://is.gd/zRoUxC
-</div>
-            <div class="link"><a href="https://is.gd/zRoUxC" target="_blank">🔗 Ver produto</a></div>
-        </div>
-    </div>
-    
-    <div class="item ">
-        <img src="https://i.imgur.com/l1vjJIi.png" alt="Imagem do presente">
-        <div class="info">
-            <div class="title">Jogo 6 tulipas de vidro</div>
-            <div class="desc">Jogo 6 tulipas de vidro
-
-💵Valor estimado: R$ 40,00
-📲PIX: priiislopes@gmail.com
-🔗Link: https://is.gd/yJHHfv
-</div>
-            <div class="link"><a href="https://is.gd/yJHHfv" target="_blank">🔗 Ver produto</a></div>
-        </div>
-    </div>
-    
-    <div class="item ">
-        <img src="https://i.imgur.com/IPw10OZ.jpeg" alt="Imagem do presente">
-        <div class="info">
-            <div class="title">Taças de vinho</div>
-            <div class="desc">Taças de vinho
-
-💵Valor estimado: R$ 80,00
-📲PIX: priiislopes@gmail.com
-🔗Link: https://is.gd/HdgPCt
-</div>
-            <div class="link"><a href="https://is.gd/HdgPCt" target="_blank">🔗 Ver produto</a></div>
-        </div>
-    </div>
-    
-    <div class="item ">
-        <img src="https://i.imgur.com/2zK6Qoi.png" alt="Imagem do presente">
-        <div class="info">
-            <div class="title">Conjunto sobremesa</div>
-            <div class="desc">Conjunto sobremesa
-
-💵Valor estimado: R$ 60,00
-📲PIX: priiislopes@gmail.com
-🔗Link: https://is.gd/rIDwB9
-</div>
-            <div class="link"><a href="https://is.gd/rIDwB9" target="_blank">🔗 Ver produto</a></div>
-        </div>
-    </div>
-    
-    <div class="item ">
-        <img src="https://i.imgur.com/UE6P6t4.png" alt="Imagem do presente">
-        <div class="info">
-            <div class="title">Jogo de potes para mantimentos</div>
-            <div class="desc">Jogo de potes para mantimentos
-
-💵Valor estimado: R$ 80,00
-📲PIX: priiislopes@gmail.com
-🔗Link: https://is.gd/1PR5gS
-</div>
-            <div class="link"><a href="https://is.gd/1PR5gS" target="_blank">🔗 Ver produto</a></div>
-        </div>
-    </div>
-    
-    <div class="item ">
-        <img src="https://i.imgur.com/kYxDNQt.jpeg" alt="Imagem do presente">
-        <div class="info">
-            <div class="title">Travessa de vidro com tampa 4L</div>
-            <div class="desc">Travessa de vidro com tampa 4L
-
-💵Valor estimado: R$ 60,00
-📲PIX: priiislopes@gmail.com
-🔗Link: https://is.gd/av7n0l
-</div>
-            <div class="link"><a href="https://is.gd/av7n0l" target="_blank">🔗 Ver produto</a></div>
-        </div>
-    </div>
-    
-    <div class="item ">
-        <img src="https://i.imgur.com/shh56zm.jpeg" alt="Imagem do presente">
-        <div class="info">
-            <div class="title">Travessa de vidro com tampa 2,5L</div>
-            <div class="desc">Travessa de vidro com tampa 2,5L
-
-💵Valor estimado: R$ 50,00
-📲PIX: priiislopes@gmail.com
-🔗Link: https://is.gd/EnE3CN
-</div>
-            <div class="link"><a href="https://is.gd/EnE3CN" target="_blank">🔗 Ver produto</a></div>
-        </div>
-    </div>
-    
-    <div class="item ">
-        <img src="https://i.imgur.com/jWs1Z1s.jpeg" alt="Imagem do presente">
-        <div class="info">
-            <div class="title">Travessa de vidro com tampa 1,8L</div>
-            <div class="desc">Travessa de vidro com tampa 1,8L
-
-💵Valor estimado: R$ 45,00
-📲PIX: priiislopes@gmail.com
-🔗Link: https://is.gd/gIugVj
-</div>
-            <div class="link"><a href="https://is.gd/gIugVj" target="_blank">🔗 Ver produto</a></div>
-        </div>
-    </div>
-    
-    <div class="item ">
-        <img src="https://i.imgur.com/ptZpvZP.png" alt="Imagem do presente">
-        <div class="info">
-            <div class="title">Kit assadeira</div>
-            <div class="desc">Kit assadeira
-
-💵Valor estimado: R$ 60,00
-📲PIX: priiislopes@gmail.com
-🔗Link: https://is.gd/2ylSE4
-</div>
-            <div class="link"><a href="https://is.gd/2ylSE4" target="_blank">🔗 Ver produto</a></div>
-        </div>
-    </div>
-    
-    <div class="item ">
-        <img src="https://i.imgur.com/aY15wpE.png" alt="Imagem do presente">
-        <div class="info">
-            <div class="title">Kit Conjunto 5 Bowl Vidro</div>
-            <div class="desc">Kit Conjunto 5 Bowl Vidro
-
-💵Valor estimado: R$ 50,00
-📲PIX: priiislopes@gmail.com
-🔗Link: https://is.gd/HuTepy
-</div>
-            <div class="link"><a href="https://is.gd/HuTepy" target="_blank">🔗 Ver produto</a></div>
-        </div>
-    </div>
-    
-    <div class="item ">
-        <img src="https://i.imgur.com/xVHzpAZ.png" alt="Imagem do presente">
-        <div class="info">
-            <div class="title">Jogo de Toalhas - rosto e corpo</div>
-            <div class="desc">Jogo de Toalhas - rosto e corpo
-
-💵Valor estimado: R$ 140,00
-📲PIX: priiislopes@gmail.com
-🔗Link: https://is.gd/mGcZVf
-</div>
-            <div class="link"><a href="https://is.gd/mGcZVf" target="_blank">🔗 Ver produto</a></div>
-        </div>
-    </div>
-    
-    <div class="item ">
-        <img src="https://i.imgur.com/aE0RFlC.png" alt="Imagem do presente">
-        <div class="info">
-            <div class="title">Jogo de cama</div>
-            <div class="desc">Jogo de cama
-
-💵Valor estimado: R$ 90,00
-📲PIX: priiislopes@gmail.com
-🔗Link: https://is.gd/zs2ies
-</div>
-            <div class="link"><a href="https://is.gd/zs2ies" target="_blank">🔗 Ver produto</a></div>
-        </div>
-    </div>
-    
-    <div class="item ">
-        <img src="https://i.imgur.com/6kiLY62.png" alt="Imagem do presente">
-        <div class="info">
-            <div class="title">Cobre leito</div>
-            <div class="desc">Cobre leito
-
-💵Valor estimado: R$ 130,00
-📲PIX: priiislopes@gmail.com
-🔗Link: https://is.gd/ScINg4
-</div>
-            <div class="link"><a href="https://is.gd/ScINg4" target="_blank">🔗 Ver produto</a></div>
-        </div>
-    </div>
-    
-    <div class="item ">
-        <img src="https://i.imgur.com/yNNRTiB.png" alt="Imagem do presente">
-        <div class="info">
-            <div class="title">Blender 2 jarras</div>
-            <div class="desc">Blender 2 jarras
-
-💵Valor estimado: R$ 150,00
-📲PIX: priiislopes@gmail.com
-🔗Link: https://is.gd/ycFZUR
-</div>
-            <div class="link"><a href="https://is.gd/ycFZUR" target="_blank">🔗 Ver produto</a></div>
-        </div>
-    </div>
-    
-    <div class="item ">
-        <img src="https://i.imgur.com/hOYMk58.png" alt="Imagem do presente">
-        <div class="info">
-            <div class="title">Mini processador</div>
-            <div class="desc">Mini processador
-
-💵Valor estimado: R$ 100,00
-📲PIX: priiislopes@gmail.com
-🔗Link: https://is.gd/rKmwCL
-</div>
-            <div class="link"><a href="https://is.gd/rKmwCL" target="_blank">🔗 Ver produto</a></div>
-        </div>
-    </div>
-    
-    <div class="item ">
-        <img src="https://i.imgur.com/LUfN8ou.png" alt="Imagem do presente">
-        <div class="info">
-            <div class="title">Ferro de passar roupa</div>
-            <div class="desc">Ferro de passar roupa
-
-💵Valor estimado: R$ 130,00
-📲PIX: priiislopes@gmail.com
-🔗Link: https://is.gd/87DJg3
-</div>
-            <div class="link"><a href="https://is.gd/87DJg3" target="_blank">🔗 Ver produto</a></div>
-        </div>
-    </div>
-    
-    <div class="item ">
-        <img src="https://i.imgur.com/izNEqOP.jpeg" alt="Imagem do presente">
-        <div class="info">
-            <div class="title">Purificador de água gelada (cinza/grafite)</div>
-            <div class="desc">Purificador de água (cinza/grafite)
-
-💵Valor estimado: R$ 600,00
-📲PIX: priiislopes@gmail.com
-🔗Link: https://is.gd/qNZvmU  
-</div>
-            <div class="link"><a href="https://is.gd/qNZvmU" target="_blank">🔗 Ver produto</a></div>
-        </div>
-    </div>
-    
-    <div class="item ">
-        <img src="https://i.imgur.com/cE2tdHb.jpeg" alt="Imagem do presente">
-        <div class="info">
-            <div class="title">Sanduicheira elétrica</div>
-            <div class="desc">Sanduicheira elétrica
-
-💵Valor estimado: R$ 130,00
-📲PIX: priiislopes@gmail.com
-🔗Link: https://is.gd/QnVQYR
-</div>
-            <div class="link"><a href="https://is.gd/QnVQYR" target="_blank">🔗 Ver produto</a></div>
-        </div>
-    </div>
-    
-    <div class="item ">
-        <img src="https://i.imgur.com/IyoHXDr.png" alt="Imagem do presente">
-        <div class="info">
-            <div class="title">Churrasqueira elétrica</div>
-            <div class="desc">Churrasqueira elétrica
-
-💵Valor estimado: R$ 150,00
-📲PIX: priiislopes@gmail.com
-🔗Link: https://is.gd/VHpQxs
-</div>
-            <div class="link"><a href="https://is.gd/VHpQxs" target="_blank">🔗 Ver produto</a></div>
-        </div>
-    </div>
-    
-    <div class="item ">
-        <img src="https://i.imgur.com/TdHLs1D.png" alt="Imagem do presente">
-        <div class="info">
-            <div class="title">Chaleira elétrica</div>
-            <div class="desc">Chaleira elétrica
-
-💵Valor estimado: R$ 80,00
-📲PIX: priiislopes@gmail.com
-🔗Link: Link: https://is.gd/k3VA93
-</div>
-            <div class="link"><a href="https://is.gd/k3VA93" target="_blank">🔗 Ver produto</a></div>
-        </div>
-    </div>
-    
-    <div class="item ">
-        <img src="https://i.imgur.com/gk5VAzs.png" alt="Imagem do presente">
-        <div class="info">
-            <div class="title">Garrafa de café média (1L) - preta</div>
-            <div class="desc">Garrafa de café média (1L) - preta
-
-💵Valor estimado: R$ 65,00
-📲PIX: priiislopes@gmail.com
-🔗Link: https://is.gd/LSysAY
-</div>
-            <div class="link"><a href="https://is.gd/LSysAY" target="_blank">🔗 Ver produto</a></div>
-        </div>
-    </div>
-    
-    <div class="item ">
-        <img src="https://i.imgur.com/t2HSXu2.png" alt="Imagem do presente">
-        <div class="info">
-            <div class="title">Frigideira WOK antiaderente</div>
-            <div class="desc">Frigideira wok antiaderente
-
-💵Valor estimado: R$ 180,00
-📲PIX: priiislopes@gmail.com
-🔗Link: https://is.gd/Nd1Kyj
-</div>
-            <div class="link"><a href="https://is.gd/Nd1Kyj" target="_blank">🔗 Ver produto</a></div>
-        </div>
-    </div>
-    
-    <div class="item ">
-        <img src="https://i.imgur.com/6otTzhW.jpeg" alt="Imagem do presente">
-        <div class="info">
-            <div class="title">Panela de Pressão Antiaderente Fechamento Externo</div>
-            <div class="desc">Panela de Pressão Antiaderente Fechamento Externo
-
-💵Valor estimado: R$ 175,00
-📲PIX: priiislopes@gmail.com
-🔗Link: https://is.gd/Jv51KM
-</div>
-            <div class="link"><a href="https://is.gd/Jv51KM" target="_blank">🔗 Ver produto</a></div>
-        </div>
-    </div>
-    
-    <div class="item ">
-        <img src="https://i.imgur.com/HZeYO3l.png" alt="Imagem do presente">
-        <div class="info">
-            <div class="title">Cuscuzeira grande</div>
-            <div class="desc">Cuscuzeira grande
-
-💵Valor estimado: R$ 40,00
-📲PIX: priiislopes@gmail.com
-🔗Link: https://is.gd/aqrrzA
-</div>
-            <div class="link"><a href="https://is.gd/aqrrzA" target="_blank">🔗 Ver produto</a></div>
-        </div>
-    </div>
-    
-    <div class="item ">
-        <img src="https://i.imgur.com/rmVm0Gn.png" alt="Imagem do presente">
-        <div class="info">
-            <div class="title">Cuscuzeira pequena 2x1 (cuscuz e ovo)</div>
-            <div class="desc">Cuscuzeira pequena 2x1 (cuscuz e ovo)
-
-💵Valor estimado: R$ 30,00
-📲PIX: priiislopes@gmail.com
-🔗Link: https://is.gd/ZSCxtV
-</div>
-            <div class="link"><a href="https://is.gd/ZSCxtV" target="_blank">🔗 Ver produto</a></div>
-        </div>
-    </div>
-    
-    <div class="item ">
-        <img src="https://i.imgur.com/NIsaPIs.png" alt="Imagem do presente">
-        <div class="info">
-            <div class="title">Panela caçarola 3x1</div>
-            <div class="desc">Panela caçarola 3x1
-
-💵Valor estimado: R$ 140,00
-📲PIX: priiislopes@gmail.com
-🔗Link: https://is.gd/2Jt5kz </div>
-            <div class="link"><a href="https://is.gd/2Jt5kz " target="_blank">🔗 Ver produto</a></div>
-        </div>
-    </div>
-    
-    <div class="item ">
-        <img src="https://i.imgur.com/SL2uWP0.png" alt="Imagem do presente">
-        <div class="info">
-            <div class="title">Forma fundo removível</div>
-            <div class="desc">Forma fundo removível
-
-💵Valor estimado: R$ 35,00
-📲PIX: priiislopes@gmail.com
-🔗Link: https://is.gd/vwihnW
-</div>
-            <div class="link"><a href="https://is.gd/vwihnW" target="_blank">🔗 Ver produto</a></div>
-        </div>
-    </div>
-    
-    <div class="item ">
-        <img src="https://i.imgur.com/7bcQ9FE.png" alt="Imagem do presente">
-        <div class="info">
-            <div class="title">(2) Kit para banheiro (vidro)</div>
-            <div class="desc">(2) Kit para banheiro (vidro)
-
-💵Valor estimado: R$ 50,00
-📲PIX: priiislopes@gmail.com
-🔗Link: https://is.gd/6K1kEQ
-</div>
-            <div class="link"><a href="https://is.gd/6K1kEQ" target="_blank">🔗 Ver produto</a></div>
-        </div>
-    </div>
-    
-    <div class="item ">
-        <img src="https://i.imgur.com/nRKyVLU.png" alt="Imagem do presente">
-        <div class="info">
-            <div class="title">Kit 10 potes para temperos de vidro (200ml)</div>
-            <div class="desc">10 potes para temperos de vidro (200ml)
-
-💵Valor estimado: R$ 60,00
-📲PIX: priiislopes@gmail.com
-🔗Link: https://is.gd/NhyTw6
-</div>
-            <div class="link"><a href="https://is.gd/NhyTw6" target="_blank">🔗 Ver produto</a></div>
-        </div>
-    </div>
-    
-    <div class="item ">
-        <img src="https://i.imgur.com/47QRgyn.png" alt="Imagem do presente">
-        <div class="info">
-            <div class="title">Bandeijas de alumínio (kit 3 tamanhos)</div>
-            <div class="desc">Bandeijas de alumínio (kit 3 tamanhos)
-
-💵Valor estimado: R$ 48,00
-📲PIX: priiislopes@gmail.com
-🔗Link: https://is.gd/eAYB64
-</div>
-            <div class="link"><a href="https://is.gd/eAYB64" target="_blank">🔗 Ver produto</a></div>
-        </div>
-    </div>
-    
-    <div class="item ">
-        <img src="https://i.imgur.com/93sGGmb.jpeg" alt="Imagem do presente">
-        <div class="info">
-            <div class="title">Tábua de corte</div>
-            <div class="desc">Tábua de corte
-
-💵Valor estimado: R$ 35,00
-📲PIX: priiislopes@gmail.com
-🔗Link: https://is.gd/0yILCa
-</div>
-            <div class="link"><a href="https://is.gd/0yILCa" target="_blank">🔗 Ver produto</a></div>
-        </div>
-    </div>
-    
-    <div class="item ">
-        <img src="https://i.imgur.com/JFWD6o2.png" alt="Imagem do presente">
-        <div class="info">
-            <div class="title">Jogo de facas 10 peças</div>
-            <div class="desc">Jogo de facas 10 peças
-
-💵Valor estimado: R$ 100,00
-📲PIX: priiislopes@gmail.com
-🔗Link: https://is.gd/fR4gHS
-</div>
-            <div class="link"><a href="https://is.gd/fR4gHS" target="_blank">🔗 Ver produto</a></div>
-        </div>
-    </div>
-    
-    <div class="item ">
-        <img src="https://i.imgur.com/pSCwwS3.png" alt="Imagem do presente">
-        <div class="info">
-            <div class="title">Jogo de pegadores de silicone</div>
-            <div class="desc">Jogo de pegadores de silicone
-
-💵Valor estimado: R$ 60,00
-📲PIX: priiislopes@gmail.com
-🔗Link: https://is.gd/FuDaLT
-</div>
-            <div class="link"><a href="https://is.gd/FuDaLT" target="_blank">🔗 Ver produto</a></div>
-        </div>
-    </div>
-    
-    <div class="item ">
-        <img src="https://i.imgur.com/IkBX7Wn.png" alt="Imagem do presente">
-        <div class="info">
-            <div class="title">Jarra de suco de vidro com tampa</div>
-            <div class="desc">Jarra de suco de vidro com tampa
-
-💵Valor estimado: R$ 40,00
-📲PIX: priiislopes@gmail.com
-🔗Link: https://is.gd/TK8PVp
-</div>
-            <div class="link"><a href="https://is.gd/TK8PVp" target="_blank">🔗 Ver produto</a></div>
-        </div>
-    </div>
-    
-    <div class="item ">
-        <img src="https://i.imgur.com/nGjFX0J.png" alt="Imagem do presente">
-        <div class="info">
-            <div class="title">Petisqueira cerâmica branca/vidro</div>
-            <div class="desc">Petisqueira cerâmica branca/vidro
-
-💵Valor estimado: R$ 50,00
-📲PIX: priiislopes@gmail.com
-🔗Link: https://is.gd/XD41pQ 
-</div>
-            <div class="link"><a href="https://is.gd/XD41pQ " target="_blank">🔗 Ver produto</a></div>
-        </div>
-    </div>
-    
-    <div class="item ">
-        <img src="https://i.imgur.com/CJ574ty.png" alt="Imagem do presente">
-        <div class="info">
-            <div class="title">Abridor de vinho</div>
-            <div class="desc">Abridor de vinho
-
-💵Valor estimado: R$ 50,00
-📲PIX: priiislopes@gmail.com
-🔗Link: https://is.gd/gX1Yha
-</div>
-            <div class="link"><a href="https://is.gd/gX1Yha" target="_blank">🔗 Ver produto</a></div>
-        </div>
-    </div>
-    
-    <div class="item ">
-        <img src="https://i.imgur.com/HkgDrAG.png" alt="Imagem do presente">
-        <div class="info">
-            <div class="title">Rodo, vassoura e pá</div>
-            <div class="desc">Rodo, vassoura e pá
-
-💵Valor estimado: R$ 80,00
-📲PIX: priiislopes@gmail.com
-🔗Link: https://is.gd/Clajjf
-</div>
-            <div class="link"><a href="https://is.gd/Clajjf" target="_blank">🔗 Ver produto</a></div>
-        </div>
-    </div>
-    
-    <div class="item ">
-        <img src="https://i.imgur.com/FVFb0Ea.png" alt="Imagem do presente">
-        <div class="info">
-            <div class="title">Mop spray</div>
-            <div class="desc">Mop spray
-
-💵Valor estimado: R$ 40,00
-📲PIX: priiislopes@gmail.com
-🔗Link: https://is.gd/9wcmoh
-</div>
-            <div class="link"><a href="https://is.gd/9wcmoh" target="_blank">🔗 Ver produto</a></div>
-        </div>
-    </div>
-    
-    <div class="item ">
-        <img src="https://i.imgur.com/XeXGOW7.png" alt="Imagem do presente">
-        <div class="info">
-            <div class="title">Escova de limpeza elétrica multiuso</div>
-            <div class="desc">Escova de limpeza elétrica multiuso
-
-💵Valor estimado: R$ 65,00
-📲PIX: priiislopes@gmail.com
-🔗Link: https://is.gd/cqggkv 
-</div>
-            <div class="link"><a href="https://is.gd/cqggkv" target="_blank">🔗 Ver produto</a></div>
-        </div>
-    </div>
-    
-    <div class="item ">
-        <img src="https://i.imgur.com/fwcIaKr.png" alt="Imagem do presente">
-        <div class="info">
-            <div class="title">Kit galheteiro</div>
-            <div class="desc">Kit galheteiro
-
-💵Valor estimado: R$ 110,00
-📲PIX: priiislopes@gmail.com
-🔗Link: https://is.gd/bz2Oza 
-</div>
-            <div class="link"><a href="https://is.gd/bz2Oza" target="_blank">🔗 Ver produto</a></div>
-        </div>
-    </div>
-    
-    <div class="item ">
-        <img src="https://i.imgur.com/o4keCw7.png" alt="Imagem do presente">
-        <div class="info">
-            <div class="title">2 Borrifadores de oleo</div>
-            <div class="desc">2 Borrifadores de oleo
-
-💵Valor estimado: R$ 30,00
-📲PIX: priiislopes@gmail.com
-🔗Link: https://is.gd/OMZjqR 
-</div>
-            <div class="link"><a href="https://is.gd/OMZjqR " target="_blank">🔗 Ver produto</a></div>
-        </div>
-    </div>
-    
-    <div class="item ">
-        <img src="https://i.imgur.com/zKOjxar.png" alt="Imagem do presente">
-        <div class="info">
-            <div class="title">Kit 3 peneiras e 1 cesto inox</div>
-            <div class="desc">Kit 3 peneiras e 1 cesto inox
-
-💵Valor estimado: R$ 40,00
-📲PIX: priiislopes@gmail.com
-🔗Link: https://is.gd/ouZf0r 
-</div>
-            <div class="link"><a href="https://is.gd/ouZf0r " target="_blank">🔗 Ver produto</a></div>
-        </div>
-    </div>
-    
-    <div class="item ">
-        <img src="https://i.imgur.com/tHUpEKk.png" alt="Imagem do presente">
-        <div class="info">
-            <div class="title">Queijeira em vidro</div>
-            <div class="desc">Queijeira em vidro
-
-💵Valor estimado: R$ 50,00
-📲PIX: priiislopes@gmail.com
-🔗Link: https://is.gd/ZqXegd </div>
-            <div class="link"><a href="https://is.gd/ZqXegd " target="_blank">🔗 Ver produto</a></div>
-        </div>
-    </div>
-    
-    <div class="item ">
-        <img src="https://i.imgur.com/btR6OSk.png" alt="Imagem do presente">
-        <div class="info">
-            <div class="title">Boleira em vidro</div>
-            <div class="desc">Boleira em vidro
-
-💵Valor estimado: R$ 60,00
-📲PIX: priiislopes@gmail.com
-🔗Link: https://is.gd/7iyCq2
-</div>
-            <div class="link"><a href="https://is.gd/7iyCq2" target="_blank">🔗 Ver produto</a></div>
-        </div>
-    </div>
-    
-    <div class="item ">
-        <img src="https://i.imgur.com/VNe2sgG.png" alt="Imagem do presente">
-        <div class="info">
-            <div class="title">Jogo americano (8 peças - 4 cinzas, 4 marrom)</div>
-            <div class="desc">Jogo americano (8 peças - 4 cinzas, 4 marrom)
-
-💵Valor estimado: R$ 50,00
-📲PIX: priiislopes@gmail.com
-🔗Link: https://is.gd/2CkRzb 
-</div>
-            <div class="link"><a href="https://is.gd/2CkRzb " target="_blank">🔗 Ver produto</a></div>
-        </div>
-    </div>
-    
-    <div class="item ">
-        <img src="https://i.imgur.com/OMrYdho.png" alt="Imagem do presente">
-        <div class="info">
-            <div class="title">4 Tapetes para banheiro - médio, cinza</div>
-            <div class="desc">4 Tapetes para banheiro - médio, cinza
-
-💵Valor estimado: R$ 50,00
-📲PIX: priiislopes@gmail.com
-🔗Link: https://is.gd/Een4Ud 
-</div>
-            <div class="link"><a href="https://is.gd/Een4Ud" target="_blank">🔗 Ver produto</a></div>
-        </div>
-    </div>
-    
-    <div class="item ">
-        <img src="https://i.imgur.com/3acoSzi.jpeg" alt="Imagem do presente">
-        <div class="info">
-            <div class="title">Slicer aço inox</div>
-            <div class="desc">Slicer aço inox 
-
-💵Valor estimado: R$ 40,00
-📲PIX: priiislopes@gmail.com
-🔗Link: https://is.gd/5dzBl9 
-</div>
-            <div class="link"><a href="https://is.gd/5dzBl9" target="_blank">🔗 Ver produto</a></div>
-        </div>
-    </div>
-    
-    <div class="item ">
-        <img src="https://i.imgur.com/L2nd4ND.png" alt="Imagem do presente">
-        <div class="info">
-            <div class="title">Kit balde retrátil de silicone</div>
-            <div class="desc">Kit balde retrátil de silicone
-
-💵Valor estimado: R$ 115,00
-📲PIX: priiislopes@gmail.com
-🔗Link: https://is.gd/jgbcb4
-</div>
-            <div class="link"><a href="https://is.gd/jgbcb4" target="_blank">🔗 Ver produto</a></div>
-        </div>
-    </div>
-    
-    <div class="item ">
-        <img src="https://i.imgur.com/j8q73VN.jpeg" alt="Imagem do presente">
-        <div class="info">
-            <div class="title">Cafeteira programável</div>
-            <div class="desc">Cafeteira programável
-
-💵Valor estimado: R$ 200,00
-📲PIX: priiislopes@gmail.com
-🔗Link: https://is.gd/C6DItI 
-</div>
-            <div class="link"><a href="https://is.gd/C6DItI " target="_blank">🔗 Ver produto</a></div>
-        </div>
-    </div>
-    
-    <div class="item ">
-        <img src="https://i.imgur.com/3DLXD12.jpeg" alt="Imagem do presente">
-        <div class="info">
-            <div class="title">Secador de cabelo</div>
-            <div class="desc">Secador de cabelo
-
-💵Valor estimado: R$ 130,00
-📲PIX: priiislopes@gmail.com
-🔗Link: https://is.gd/7YLa6M 
-</div>
-            <div class="link"><a href="https://is.gd/7YLa6M" target="_blank">🔗 Ver produto</a></div>
-        </div>
-    </div>
-    
-    <div class="item ">
-        <img src="https://i.imgur.com/LuxRblW.jpeg" alt="Imagem do presente">
-        <div class="info">
-            <div class="title">Toalheira térmica preta</div>
-            <div class="desc">Toalheira térmica preta
-
-💵Valor estimado: R$ 300,00
-📲PIX: priiislopes@gmail.com
-🔗Link: https://is.gd/BtnY5T 
-</div>
-            <div class="link"><a href="https://is.gd/BtnY5T " target="_blank">🔗 Ver produto</a></div>
-        </div>
-    </div>
-    
-    <div class="item ">
-        <img src="https://i.imgur.com/ZmlYQKH.jpeg" alt="Imagem do presente">
-        <div class="info">
-            <div class="title">Aspirador de pó</div>
-            <div class="desc">Aspirador de pó
-
-💵Valor estimado: R$ 250,00
-📲PIX: priiislopes@gmail.com
-🔗Link: https://is.gd/RB0adT 
-</div>
-            <div class="link"><a href="https://is.gd/RB0adT" target="_blank">🔗 Ver produto</a></div>
-        </div>
-    </div>
-    
-    <div class="item ">
-        <img src="https://i.imgur.com/xtlsCtR.png" alt="Imagem do presente">
-        <div class="info">
-            <div class="title">Escorredor de louça pequeno</div>
-            <div class="desc">Escorredor de louça pequeno
-
-💵Valor estimado: R$ 75,00
-📲PIX: priiislopes@gmail.com
-🔗Link: https://is.gd/mgCDGU 
-</div>
-            <div class="link"><a href="https://is.gd/mgCDGU" target="_blank">🔗 Ver produto</a></div>
-        </div>
-    </div>
-    
-    <div class="item ">
-        <img src="https://i.imgur.com/vTsjsuP.png" alt="Imagem do presente">
-        <div class="info">
-            <div class="title">Lixeira para banheiro</div>
-            <div class="desc">Lixeira para banheiro
-
-💵Valor estimado: R$ 80,00
-📲PIX: priiislopes@gmail.com
-🔗Link: https://is.gd/kO7nNe 
-</div>
-            <div class="link"><a href="https://is.gd/kO7nNe " target="_blank">🔗 Ver produto</a></div>
-        </div>
-    </div>
-    
-    <div class="item ">
-        <img src="https://i.imgur.com/lnyKtht.png" alt="Imagem do presente">
-        <div class="info">
-            <div class="title">Lixeira para cozinha grande preta</div>
-            <div class="desc">Lixeira para cozinha grande preta
-
-💵Valor estimado: R$ 180,00
-📲PIX: priiislopes@gmail.com
-🔗Link: https://is.gd/HFqB0j 
-</div>
-            <div class="link"><a href="https://is.gd/HFqB0j" target="_blank">🔗 Ver produto</a></div>
-        </div>
-    </div>
-    
-    <div class="item ">
-        <img src="https://i.imgur.com/E14Q8Wn.jpeg" alt="Imagem do presente">
-        <div class="info">
-            <div class="title">Panela elétrica de arroz</div>
-            <div class="desc">Panela elétrica de arroz
-
-💵Valor estimado: R$ 150,00
-📲PIX: priiislopes@gmail.com
-🔗Link: https://is.gd/6VOhd2
-</div>
-            <div class="link"><a href="https://is.gd/6VOhd2" target="_blank">🔗 Ver produto</a></div>
-        </div>
-    </div>
-    
-    <div class="item ">
-        <img src="https://i.imgur.com/1udktzY.png" alt="Imagem do presente">
-        <div class="info">
-            <div class="title">Caixas organizadoras</div>
-            <div class="desc">Caixas organizadoras
-
-💵Valor estimado: R$ 90,00
-📲PIX: priiislopes@gmail.com
-🔗Link: https://is.gd/x5Ae9g 
-</div>
-            <div class="link"><a href="https://is.gd/x5Ae9g" target="_blank">🔗 Ver produto</a></div>
-        </div>
-    </div>
-    
-    <div class="item ">
-        <img src="https://i.imgur.com/Yh9GZUG.png" alt="Imagem do presente">
-        <div class="info">
-            <div class="title">Fruteira</div>
-            <div class="desc">Fruteira
-
-💵Valor estimado: R$ 75,00
-📲PIX: priiislopes@gmail.com
-🔗Link: https://is.gd/62UFCQ 
-</div>
-            <div class="link"><a href="https://is.gd/62UFCQ " target="_blank">🔗 Ver produto</a></div>
-        </div>
-    </div>
-    
-    <div class="item ">
-        <img src="https://i.imgur.com/7CujXCL.png" alt="Imagem do presente">
-        <div class="info">
-            <div class="title">Organizadores de geladeira</div>
-            <div class="desc">Organizadores de geladeira
-
-💵Valor estimado: R$ 120,00 
-📲PIX: priiislopes@gmail.com
-🔗Link: https://is.gd/xafKk3
-</div>
-            <div class="link"><a href="https://is.gd/xafKk3" target="_blank">🔗 Ver produto</a></div>
-        </div>
-    </div>
-    
-    <div class="item ">
-        <img src="https://i.imgur.com/xDzhSGQ.png" alt="Imagem do presente">
-        <div class="info">
-            <div class="title">Panela elétrica multifuncional 4L</div>
-            <div class="desc">Panela elétrica multifuncional 4L
-
-💵Valor estimado: R$ 180,00 
-📲PIX: priiislopes@gmail.com
-🔗Link: https://is.gd/IsgbZZ 
-</div>
-            <div class="link"><a href="https://is.gd/IsgbZZ " target="_blank">🔗 Ver produto</a></div>
-        </div>
-    </div>
-    
+  <h1>Lista de Presentes <br>Tiago & Priscila</h1>
+
+  <div class="grid" id="listaPresentes"></div>
+
+  <div id="formulario">
+    <h3>Confirmar Presente</h3>
+    <p id="presenteEscolhido"></p>
+    <label for="nome">Seu nome:</label>
+    <input type="text" id="nome" required />
+    <label for="email">Seu e-mail:</label>
+    <input type="email" id="email" required />
+    <button onclick="enviarConfirmacao()">Enviar Confirmação</button>
+  </div>
+
+  <script>
+    let presentes = [];
+    let presenteSelecionado = null;
+
+    async function carregarPresentes() {
+      const response = await fetch('data.json');
+      presentes = await response.json();
+      exibirPresentes();
+    }
+
+    function exibirPresentes() {
+      const container = document.getElementById("listaPresentes");
+      container.innerHTML = "";
+      presentes.forEach((item, index) => {
+        const card = document.createElement("div");
+        card.className = "card";
+        card.innerHTML = `
+          <img src="${item.image}" alt="${item.title}" />
+          <h2>${item.title}</h2>
+          <p>${item.description}</p>
+          <p class="price">${item.price}</p>
+          <a href="${item.link}" target="_blank">Ver Produto</a>
+          <button onclick="selecionarPresente(${index})">Quero Presentear</button>
+        `;
+        container.appendChild(card);
+      });
+    }
+
+    function selecionarPresente(index) {
+      presenteSelecionado = presentes[index];
+      document.getElementById("presenteEscolhido").innerText = presenteSelecionado.title;
+      document.getElementById("formulario").style.display = "block";
+      window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
+    }
+
+    function enviarConfirmacao() {
+      const nome = document.getElementById("nome").value;
+      const email = document.getElementById("email").value;
+
+      if (!nome || !email || !presenteSelecionado) {
+        alert("Preencha todos os campos!");
+        return;
+      }
+
+      const payload = {
+        nome,
+        email,
+        presente: presenteSelecionado.title
+      };
+
+      fetch("https://script.google.com/macros/s/SEU_DEPLOY_URL_AQUI/exec", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(payload)
+      })
+      .then((res) => res.json())
+      .then((data) => {
+        alert("Presente confirmado! Obrigado ❤️");
+        document.getElementById("formulario").style.display = "none";
+        window.location.reload();
+      })
+      .catch((err) => {
+        console.error(err);
+        alert("Erro ao enviar confirmação.");
+      });
+    }
+
+    carregarPresentes();
+  </script>
 </body>
 </html>
