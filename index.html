@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
@@ -46,15 +47,36 @@
       border-radius: 0.5rem;
       border: 1px solid #ccc;
     }
+    #auth {
+      text-align: center;
+      margin-bottom: 2rem;
+    }
   </style>
 </head>
 <body>
   <h1>Lista de Presentes<br />Tiago & Priscila</h1>
-  <div id="giftList">Carregando...</div>
+
+  <div id="auth">
+    <input type="password" id="senha" placeholder="Digite a senha de acesso" />
+    <button onclick="autenticar()">Entrar</button>
+  </div>
+
+  <div id="giftList" style="display:none;">Carregando...</div>
 
   <script>
     const apiURL = 'https://script.google.com/macros/s/AKfycbxELiei2tALHiHNqaWhEaKnW6hNVZCQglmRhkMM5adBHk6MDBys1x-wiL4Ol8GWrWrR/exec';
     const dataURL = 'data.json';
+
+    function autenticar() {
+      const senha = document.getElementById('senha').value;
+      if (senha === 'chasamento2025') {
+        document.getElementById('auth').style.display = 'none';
+        document.getElementById('giftList').style.display = 'block';
+        loadGifts();
+      } else {
+        alert('Senha incorreta!');
+      }
+    }
 
     async function loadGifts() {
       const res = await fetch(dataURL);
@@ -63,16 +85,16 @@
       container.innerHTML = '';
 
       gifts.forEach(gift => {
-        if (gift.escolhido !== 'TRUE') {
+        if (gift.selected !== 'TRUE') {
           const div = document.createElement('div');
           div.className = 'card';
           div.innerHTML = `
-            <h3>${gift.nome}</h3>
-            <img src="${gift.imagem}" alt="${gift.nome}" />
-            <p>${gift.descricao}</p>
-            <p><strong>Valor:</strong> ${gift.valor}</p>
+            <h3>${gift.title}</h3>
+            <img src="${gift.image}" alt="${gift.title}" />
+            <p>${gift.description}</p>
+            <p><strong>Valor:</strong> R$ ${gift.price}</p>
             <a href="${gift.link}" target="_blank">Ver Produto</a>
-            <form onsubmit="handleSubmit(event, '${gift.nome}', this)">
+            <form onsubmit="handleSubmit(event, '${gift.title}', this)">
               <input type="text" name="nome" placeholder="Seu nome" required />
               <input type="email" name="email" placeholder="Seu email" required />
               <button type="submit">Escolher este presente</button>
@@ -101,8 +123,6 @@
       alert('Presente reservado com sucesso!');
       await loadGifts();
     }
-
-    loadGifts();
   </script>
 </body>
 </html>
