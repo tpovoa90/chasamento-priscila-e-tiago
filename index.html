@@ -5,106 +5,104 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Lista de Presentes - Tiago & Priscila</title>
   <style>
-    body { font-family: Arial, sans-serif; background: #fdfdfd; margin: 0; padding: 20px; }
-    h1 { text-align: center; color: #333; }
-    .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; padding: 20px 0; }
-    .card { background: white; border-radius: 10px; box-shadow: 0 0 10px #ccc; padding: 15px; display: flex; flex-direction: column; justify-content: space-between; }
-    .card img { max-width: 100%; height: auto; border-radius: 10px; }
-    .card h2 { font-size: 1.2em; margin: 10px 0 5px; color: #444; }
-    .card p { font-size: 0.95em; color: #666; }
-    .card .price { font-weight: bold; color: #1e88e5; margin-top: 8px; }
-    .card button { margin-top: auto; padding: 10px; background: #1e88e5; color: white; border: none; border-radius: 6px; cursor: pointer; }
-    .card button:hover { background: #1565c0; }
-    #formulario { display: none; margin-top: 20px; padding: 20px; border: 2px solid #1e88e5; border-radius: 8px; }
-    #formulario h3 { margin-top: 0; }
-    label { display: block; margin: 8px 0 4px; }
-    input[type="text"], input[type="email"] { width: 100%; padding: 8px; border-radius: 4px; border: 1px solid #ccc; }
-    #formulario button { margin-top: 10px; }
+    body {
+      font-family: sans-serif;
+      background: #f8f8f8;
+      margin: 0;
+      padding: 2rem;
+    }
+    h1 {
+      text-align: center;
+    }
+    .card {
+      background: white;
+      border-radius: 1rem;
+      padding: 1rem;
+      margin: 1rem auto;
+      max-width: 500px;
+      box-shadow: 0 0 1rem rgba(0,0,0,0.1);
+    }
+    img {
+      width: 100%;
+      max-height: 200px;
+      object-fit: contain;
+      border-radius: 0.5rem;
+    }
+    button {
+      background-color: #00a859;
+      color: white;
+      padding: 0.5rem 1rem;
+      border: none;
+      border-radius: 0.5rem;
+      cursor: pointer;
+    }
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+    input {
+      padding: 0.5rem;
+      border-radius: 0.5rem;
+      border: 1px solid #ccc;
+    }
   </style>
 </head>
 <body>
-  <h1>Lista de Presentes <br>Tiago & Priscila</h1>
-
-  <div class="grid" id="listaPresentes"></div>
-
-  <div id="formulario">
-    <h3>Confirmar Presente</h3>
-    <p id="presenteEscolhido"></p>
-    <label for="nome">Seu nome:</label>
-    <input type="text" id="nome" required />
-    <label for="email">Seu e-mail:</label>
-    <input type="email" id="email" required />
-    <button onclick="enviarConfirmacao()">Enviar Confirmação</button>
-  </div>
+  <h1>Lista de Presentes<br />Tiago & Priscila</h1>
+  <div id="giftList">Carregando...</div>
 
   <script>
-    let presentes = [];
-    let presenteSelecionado = null;
+    const apiURL = 'https://script.google.com/macros/s/AKfycbxELiei2tALHiHNqaWhEaKnW6hNVZCQglmRhkMM5adBHk6MDBys1x-wiL4Ol8GWrWrR/exec';
+    const dataURL = 'data.json';
 
-    async function carregarPresentes() {
-      const response = await fetch('data.json');
-      presentes = await response.json();
-      exibirPresentes();
-    }
+    async function loadGifts() {
+      const res = await fetch(dataURL);
+      const gifts = await res.json();
+      const container = document.getElementById('giftList');
+      container.innerHTML = '';
 
-    function exibirPresentes() {
-      const container = document.getElementById("listaPresentes");
-      container.innerHTML = "";
-      presentes.forEach((item, index) => {
-        const card = document.createElement("div");
-        card.className = "card";
-        card.innerHTML = `
-          <img src="${item.image}" alt="${item.title}" />
-          <h2>${item.title}</h2>
-          <p>${item.description}</p>
-          <p class="price">${item.price}</p>
-          <a href="${item.link}" target="_blank">Ver Produto</a>
-          <button onclick="selecionarPresente(${index})">Quero Presentear</button>
-        `;
-        container.appendChild(card);
+      gifts.forEach(gift => {
+        if (gift.escolhido !== 'TRUE') {
+          const div = document.createElement('div');
+          div.className = 'card';
+          div.innerHTML = `
+            <h3>${gift.nome}</h3>
+            <img src="${gift.imagem}" alt="${gift.nome}" />
+            <p>${gift.descricao}</p>
+            <p><strong>Valor:</strong> ${gift.valor}</p>
+            <a href="${gift.link}" target="_blank">Ver Produto</a>
+            <form onsubmit="handleSubmit(event, '${gift.nome}', this)">
+              <input type="text" name="nome" placeholder="Seu nome" required />
+              <input type="email" name="email" placeholder="Seu email" required />
+              <button type="submit">Escolher este presente</button>
+            </form>
+          `;
+          container.appendChild(div);
+        }
       });
     }
 
-    function selecionarPresente(index) {
-      presenteSelecionado = presentes[index];
-      document.getElementById("presenteEscolhido").innerText = presenteSelecionado.title;
-      document.getElementById("formulario").style.display = "block";
-      window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
-    }
-
-    function enviarConfirmacao() {
-      const nome = document.getElementById("nome").value;
-      const email = document.getElementById("email").value;
-
-      if (!nome || !email || !presenteSelecionado) {
-        alert("Preencha todos os campos!");
-        return;
-      }
-
-      const payload = {
-        nome,
-        email,
-        presente: presenteSelecionado.title
+    async function handleSubmit(e, presente, form) {
+      e.preventDefault();
+      const formData = new FormData(form);
+      const data = {
+        nome: formData.get('nome'),
+        email: formData.get('email'),
+        presente: presente
       };
-
-      fetch("https://script.google.com/macros/s/SEU_DEPLOY_URL_AQUI/exec", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(payload)
-      })
-      .then((res) => res.json())
-      .then((data) => {
-        alert("Presente confirmado! Obrigado ❤️");
-        document.getElementById("formulario").style.display = "none";
-        window.location.reload();
-      })
-      .catch((err) => {
-        console.error(err);
-        alert("Erro ao enviar confirmação.");
+      await fetch(apiURL, {
+        method: 'POST',
+        body: JSON.stringify(data),
+        headers: {
+          'Content-Type': 'application/json'
+        }
       });
+      alert('Presente reservado com sucesso!');
+      await loadGifts();
     }
 
-    carregarPresentes();
+    loadGifts();
   </script>
 </body>
 </html>
