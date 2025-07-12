@@ -65,7 +65,6 @@
 
   <script>
     const apiURL = 'https://script.google.com/macros/s/AKfycbxELiei2tALHiHNqaWhEaKnW6hNVZCQglmRhkMM5adBHk6MDBys1x-wiL4Ol8GWrWrR/exec';
-    const dataURL = 'data.json';
 
     function autenticar() {
       const senha = document.getElementById('senha').value;
@@ -85,7 +84,7 @@
       container.innerHTML = '';
 
       gifts.forEach(gift => {
-        if (gift.selected !== 'TRUE') {
+        if (!gift.selected) {
           const div = document.createElement('div');
           div.className = 'card';
           div.innerHTML = `
