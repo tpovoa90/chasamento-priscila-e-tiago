@@ -124,17 +124,18 @@
     });
 
     const text = await res.text();
-    
+    console.log('Resposta do servidor:', res.status, text);
+
     if (!res.ok) throw new Error(text);
 
     alert('Presente reservado com sucesso!');
-    console.log('Resposta do servidor:', text);
     await loadGifts();
   } catch (err) {
     console.error('Erro ao enviar presente:', err);
     alert('Erro ao reservar presente!');
   }
 }
+
 
 
 // Torna a função global para funcionar no onsubmit
