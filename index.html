@@ -111,7 +111,7 @@
   const data = {
     nome: formData.get('nome'),
     email: formData.get('email'),
-    presente: presente
+    presente: presente.trim()
   };
 
   await fetch(dataURL, {
