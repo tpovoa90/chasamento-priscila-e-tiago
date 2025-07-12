@@ -106,23 +106,36 @@
     }
 
     async function handleSubmit(e, presente, form) {
-      e.preventDefault();
-      const formData = new FormData(form);
-      const data = {
-        nome: formData.get('nome'),
-        email: formData.get('email'),
-        presente: presente
-      };
-      await fetch(apiURL, {
-        method: 'POST',
-        body: JSON.stringify(data),
-        headers: {
-          'Content-Type': 'application/json'
-        }
-      });
-      alert('Presente reservado com sucesso!');
-      await loadGifts();
+  e.preventDefault();
+  const formData = new FormData(form);
+  const data = {
+    nome: formData.get('nome'),
+    email: formData.get('email'),
+    presente: presente
+  };
+
+  await fetch(apiURL, {
+    method: 'POST',
+    body: JSON.stringify(data),
+    headers: {
+      'Content-Type': 'application/json'
     }
+  })
+  .then(res => res.text())
+  .then(console.log)
+  .catch(err => {
+    console.error('Erro ao enviar presente:', err);
+    alert('Erro ao reservar presente!');
+  });
+
+  alert('Presente reservado com sucesso!');
+  await loadGifts();
+}
+
+// Torna a função global para funcionar no onsubmit
+window.handleSubmit = handleSubmit;
+
+
   </script>
 </body>
 </html>
