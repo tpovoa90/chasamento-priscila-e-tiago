@@ -64,8 +64,10 @@
   <div id="giftList" style="display:none;">Carregando...</div>
 
   <script>
-    const dataURL = 'https://script.google.com/macros/s/AKfycbwy4uQNpXzBirtyUUPBniGLOIL7yRHHadXr3Pg9I7hu_mCi7_fXpOqPegec_ivL7kMC/exec';
-
+    const apiURL = 'https://script.google.com/macros/s/AKfycbx6QXpX6Y6tikZzlXorw2z4dI-OgB09HWwIHbm6gTqLKKtsMgQrl3_jwcZlSoG8AS0Z/exec';
+    const getURL = apiURL;
+    const postURL = apiURL;
+    
     function autenticar() {
       const senha = document.getElementById('senha').value;
       if (senha === 'chasamento2025') {
@@ -78,7 +80,7 @@
     }
 
     async function loadGifts() {
-      const res = await fetch(dataURL);
+      const res = await fetch(getURL);
       const gifts = await res.json();
       const container = document.getElementById('giftList');
       container.innerHTML = '';
@@ -115,7 +117,7 @@
   };
 
   try {
-    const res = await fetch(dataURL, {
+    const res = await fetch(postURL, {
       method: 'POST',
       body: JSON.stringify(data),
       headers: {
