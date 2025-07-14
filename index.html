@@ -13,9 +13,6 @@
   background-size: contain;
   background-color: #000;
   min-height: 100vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
 }
 
 #auth-container {
@@ -44,11 +41,31 @@
   cursor: pointer;
 }
 
+#main-content {
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 2rem;
+  box-sizing: border-box;
+}
+
+#giftList {
+  max-width: 600px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+}
+    
     h1 {
       text-align: center;
     }
     .card {
-      background: white;
+      background: rgba(255, 255, 255, 0.95);
       border-radius: 1rem;
       padding: 1rem;
       margin: 1rem auto;
@@ -86,11 +103,12 @@
   </style>
 </head>
 <body>
+  <main id="main-content">
   <div id="auth-container">
   <h1>Lista de Presentes<br>Tiago & Priscila</h1>
   <p style="margin-top: 0.5rem; font-size: 1rem;">
-    As indicações da lista são apenas referência. <br />
-    Sinta-se à vontade para comprar no link/local de sua preferência ou por meio de <strong>PIX</strong> 💚
+    As indicações da lista são apenas referências. <br />
+    Sinta-se à vontade para comprar no link/local de sua preferência ou nos presentear por meio de <strong>PIX</strong> 💚
   </p>
   <div id="auth">
     <input type="password" id="senha" placeholder="Digite a senha de acesso" />
@@ -100,6 +118,7 @@
 </div>
 
   <div id="giftList" style="display:none;">Carregando...</div>
+  </main>
 
   <script>
     const dataURL = 'https://script.google.com/macros/s/AKfycbw7cUKGn7ig0gGVB4pmAIXDiXYoVi0fFHPnNgcSb0baIQp_5lVrgwXmRucdR0o-SznS/exec';
