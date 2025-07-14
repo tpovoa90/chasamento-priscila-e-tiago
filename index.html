@@ -6,11 +6,43 @@
   <title>Lista de Presentes - Tiago & Priscila</title>
   <style>
     body {
-      font-family: sans-serif;
-      background: #f8f8f8;
-      margin: 0;
-      padding: 2rem;
-    }
+  font-family: sans-serif;
+  margin: 0;
+  padding: 0;
+  background: url('img/tii-e-prii.png') no-repeat center center fixed;
+  background-size: cover;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#auth-container {
+  background-color: rgba(255, 255, 255, 0.92);
+  padding: 2rem;
+  border-radius: 1rem;
+  max-width: 400px;
+  text-align: center;
+  box-shadow: 0 0 20px rgba(0,0,0,0.3);
+}
+
+#auth input {
+  padding: 0.5rem;
+  width: 80%;
+  border-radius: 0.5rem;
+  border: 1px solid #ccc;
+  margin-bottom: 1rem;
+}
+
+#auth button {
+  background-color: #00a859;
+  color: white;
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 0.5rem;
+  cursor: pointer;
+}
+
     h1 {
       text-align: center;
     }
@@ -53,12 +85,18 @@
   </style>
 </head>
 <body>
-  <h1>Lista de Presentes<br />Tiago & Priscila</h1>
-
+  <div id="auth-container">
+  <h1>Lista de Presentes<br>Tiago & Priscila</h1>
+  <p style="margin-top: 0.5rem; font-size: 1rem;">
+    As indicações da lista são apenas referência. <br />
+    Sinta-se à vontade para comprar no link/local de sua preferência ou por meio de <strong>PIX</strong> 💚
+  </p>
   <div id="auth">
     <input type="password" id="senha" placeholder="Digite a senha de acesso" />
+    <br />
     <button onclick="autenticar()">Entrar</button>
   </div>
+</div>
 
   <div id="giftList" style="display:none;">Carregando...</div>
 
