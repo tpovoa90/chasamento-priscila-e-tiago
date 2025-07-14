@@ -127,13 +127,13 @@
   animation: zoomIn 0.6s ease-out;
 }
 
-/* Fundo invisível por padrão */
-body::before {
-  content: '';
-  display: none;
+/* Remove o fundo padrão quando logado */
+body.lista-ativa {
+  background-image: none !important;
+  background: none !important;
 }
 
-/* Fundo ativado após o login */
+/* Fundo ativado após login */
 body.lista-ativa::before {
   content: '';
   position: fixed;
@@ -145,11 +145,11 @@ body.lista-ativa::before {
   background-repeat: repeat-y;
   background-position: center top;
   background-size: contain;
-  opacity: 0.08; /* Ajuste aqui a transparência */
+  opacity: 0.08;
   z-index: -1;
   pointer-events: none;
+  transition: opacity 0.5s ease-in-out;
 }
-
 
   </style>
 </head>
