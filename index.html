@@ -130,7 +130,6 @@
 /* Remove o fundo padrão quando logado */
 body.lista-ativa {
   background-image: none !important;
-  background: #000 !important;
 }
 
 /* Fundo ativado após login */
@@ -144,8 +143,8 @@ body.lista-ativa::before {
   background-image: url('img/tii-e-prii.png');
   background-repeat: repeat-y;
   background-position: center top;
-  background-size: cover;
-  opacity: 0.04;
+  background-size: 100% auto;
+  opacity: 0.12;
   z-index: 0;
   pointer-events: none;
   transition: opacity 0.5s ease-in-out;
