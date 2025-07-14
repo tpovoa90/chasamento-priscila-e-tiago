@@ -245,7 +245,7 @@ main, .card {
 
     if (!res.ok) throw new Error(text);
 
-    alert('Presente reservado com sucesso!');
+    window.location.href = 'obrigado.html';
     console.log('Resposta do servidor:', text);
     await loadGifts();
   } catch (err) {
