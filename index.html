@@ -130,7 +130,7 @@
 /* Remove o fundo padrão quando logado */
 body.lista-ativa {
   background-image: none !important;
-  background: none !important;
+  background: #000 !important;
 }
 
 /* Fundo ativado após login */
@@ -146,9 +146,13 @@ body.lista-ativa::before {
   background-position: center top;
   background-size: contain;
   opacity: 0.08;
-  z-index: -1;
+  z-index: 0;
   pointer-events: none;
-  transition: opacity 0.5s ease-in-out;
+}
+
+main, .card {
+  position: relative;
+  z-index: 1;
 }
 
   </style>
